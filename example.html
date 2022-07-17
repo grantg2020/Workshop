@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Workshop</title>
+	<style>
+		:root {
+			--popupHeight: 300px;
+			--popupWidth: 400px;
+		}
+
+		body {
+			margin: 0;
+			font-family: sans-serif;
+		}
+
+		#popup {
+			display: none;
+			position: absolute;
+			height: var(--popupHeight);
+			width: var(--popupWidth);
+			top: calc(50% - (var(--popupHeight) / 2));
+			left: calc(50% - (var(--popupWidth) / 2));
+			background-color: white;
+			padding: 20px;
+		}
+
+		.item {
+			background-color: lightgrey;
+			border-radius: 5px;
+			padding: 20px;
+			padding-top: 0;
+			padding-bottom: 0px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="popup">
+		<h1>New object</h1>
+		<div class="item">
+			<h2>Cube</h2>
+		</div>
+		<div class="item">
+			<h2>Cylinder</h2>
+		</div>
+		<div class="item">
+			<h2>Pyramid</h2>
+		</div>
+	</div>
+	<script src="script.js" type="module"></script>
+</body>
+
+</html>
