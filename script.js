@@ -4,7 +4,7 @@ let pointer, raycaster, isLeftDown = false, isRightDown = false;
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
-// const controls = new OrbitControls();
+// const controls = new THREE.OrbitControls();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -33,28 +33,28 @@ function onPointerDown(event) {
 
     showPopup();
 
-    pointer.set((event.clientX / window.innerWidth) * 2 - 1, - (event.clientY / window.innerHeight) * 2 + 1);
-    raycaster.setFromCamera(pointer, camera);
-    const intersects = raycaster.intersectObjects(objects, false);
-    if (intersects.length > 0) {
-        const intersect = intersects[0];
-        // delete cube
-        if (isShiftDown) {
-            if (intersect.object !== plane) {
-                scene.remove(intersect.object);
-                objects.splice(objects.indexOf(intersect.object), 1);
-            }
-            // create cube
-        } else {
-            const voxel = new THREE.Mesh(cubeGeo, cubeMaterial);
-            voxel.position.copy(intersect.point).add(intersect.face.normal);
-            voxel.position.divideScalar(50).floor().multiplyScalar(50).addScalar(25);
+    // pointer.set((event.clientX / window.innerWidth) * 2 - 1, - (event.clientY / window.innerHeight) * 2 + 1);
+    // raycaster.setFromCamera(pointer, camera);
+    // const intersects = raycaster.intersectObjects(objects, false);
+    // if (intersects.length > 0) {
+    //     const intersect = intersects[0];
+    //     // delete cube
+    //     if (isShiftDown) {
+    //         if (intersect.object !== plane) {
+    //             scene.remove(intersect.object);
+    //             objects.splice(objects.indexOf(intersect.object), 1);
+    //         }
+    //         // create cube
+    //     } else {
+    //         const voxel = new THREE.Mesh(cubeGeo, cubeMaterial);
+    //         voxel.position.copy(intersect.point).add(intersect.face.normal);
+    //         voxel.position.divideScalar(50).floor().multiplyScalar(50).addScalar(25);
 
-            scene.add(voxel);
-            objects.push(voxel);
-        }
-        render();
-    }
+    //         scene.add(voxel);
+    //         objects.push(voxel);
+    //     }
+    //     render();
+    // }
 
 }
 
